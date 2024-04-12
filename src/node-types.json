@@ -5,6 +5,11 @@
     "fields": {}
   },
   {
+    "type": "chat_handler",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "document",
     "named": true,
     "fields": {},
@@ -13,15 +18,15 @@
       "required": true,
       "types": [
         {
+          "type": "chat_handler",
+          "named": true
+        },
+        {
           "type": "message_sequence",
           "named": true
         },
         {
-          "type": "provider_service",
-          "named": true
-        },
-        {
-          "type": "settings_block",
+          "type": "params_block",
           "named": true
         },
         {
@@ -70,12 +75,7 @@
     }
   },
   {
-    "type": "provider_service",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "settings_block",
+    "type": "params_block",
     "named": true,
     "fields": {}
   },

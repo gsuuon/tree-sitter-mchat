@@ -30,16 +30,13 @@ module.exports = grammar({
 
     message_turn: $ => seq(
       $.user_message,
-      $.assistant_message
+      $._message_separator,
+      $.assistant_message,
+      $._message_separator,
     ),
 
     user_message: $ => prec.right($._lines),
-
-    assistant_message: $ => seq(
-      $._message_separator,
-      $._lines,
-      $._message_separator
-    ),
+    assistant_message: $ => $._lines,
 
     _newline: _ => /\n/,
     _line: _ => /.+/,

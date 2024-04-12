@@ -6,14 +6,14 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "provider_service"
+          "name": "chat_handler"
         },
         {
           "type": "CHOICE",
           "members": [
             {
               "type": "SYMBOL",
-              "name": "settings_block"
+              "name": "params_block"
             },
             {
               "type": "BLANK"
@@ -38,16 +38,16 @@
         }
       ]
     },
-    "provider_service": {
+    "chat_handler": {
       "type": "SYMBOL",
       "name": "_line"
     },
-    "settings_block": {
+    "params_block": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_settings_separator"
+          "name": "_params_separator"
         },
         {
           "type": "SYMBOL",
@@ -55,7 +55,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_settings_separator"
+          "name": "_params_separator"
         }
       ]
     },
@@ -82,56 +82,6 @@
           "name": "_newline"
         }
       ]
-    },
-    "_end": {
-      "type": "STRING",
-      "value": "\u0000"
-    },
-    "_newline": {
-      "type": "PATTERN",
-      "value": "\\n"
-    },
-    "_line": {
-      "type": "PATTERN",
-      "value": ".+"
-    },
-    "_lines": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_line"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_newline"
-          }
-        ]
-      }
-    },
-    "_message_separator": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 2,
-        "content": {
-          "type": "STRING",
-          "value": "\n======\n"
-        }
-      }
-    },
-    "_settings_separator": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 2,
-        "content": {
-          "type": "STRING",
-          "value": "\n---\n"
-        }
-      }
     },
     "message_sequence": {
       "type": "CHOICE",
@@ -175,7 +125,15 @@
         },
         {
           "type": "SYMBOL",
+          "name": "_message_separator"
+        },
+        {
+          "type": "SYMBOL",
           "name": "assistant_message"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_message_separator"
         }
       ]
     },
@@ -188,21 +146,54 @@
       }
     },
     "assistant_message": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_message_separator"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_lines"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_message_separator"
+      "type": "SYMBOL",
+      "name": "_lines"
+    },
+    "_newline": {
+      "type": "PATTERN",
+      "value": "\\n"
+    },
+    "_line": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "_lines": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_line"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_newline"
+          }
+        ]
+      }
+    },
+    "_message_separator": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 2,
+        "content": {
+          "type": "STRING",
+          "value": "\n======\n"
         }
-      ]
+      }
+    },
+    "_params_separator": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 2,
+        "content": {
+          "type": "STRING",
+          "value": "\n---\n"
+        }
+      }
     }
   },
   "extras": [
