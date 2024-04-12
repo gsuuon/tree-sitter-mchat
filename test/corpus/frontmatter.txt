@@ -1,0 +1,125 @@
+==============||
+Handler and message
+==============||
+
+testchathandler
+
+count to three
+
+---||
+
+(document
+  (provider_service)
+  (message_sequence
+    (user_message)))
+
+==============||
+Handler, message and settings
+==============||
+
+testchathandler
+---
+{
+  model = "gpt"
+}
+---
+count to three
+
+---||
+
+(document
+  (provider_service)
+  (settings_block)
+  (message_sequence
+    (user_message)))
+
+
+==============||
+Handler, settings, instruction, message
+==============||
+
+testchathandler
+---
+{
+  model = "gpt"
+}
+---
+> You are a helpful assistant
+
+count to three
+
+---||
+
+(document
+  (provider_service)
+  (settings_block)
+  (system_instruction)
+  (message_sequence
+    (user_message)))
+
+==============||
+Handler, settings, instruction, turn
+==============||
+
+testchathandler
+---
+{
+  model = "gpt"
+}
+---
+> You are a helpful assistant
+
+count to three
+
+======
+1, 2, 3.
+======
+
+---||
+
+(document
+  (provider_service)
+  (settings_block)
+  (system_instruction)
+  (message_sequence
+    (message_turn
+      (user_message)
+      (assistant_message))))
+
+==============||
+Handler, settings, instruction, multiple turns
+==============||
+
+testchathandler
+---
+{
+  model = "gpt"
+}
+---
+> You are a helpful assistant
+
+count to three
+
+======
+1, 2, 3.
+======
+
+continue to five
+
+======
+4, 5.
+======
+
+---||
+
+(document
+  (provider_service)
+  (settings_block)
+  (system_instruction)
+  (message_sequence
+    (message_turn
+      (user_message)
+      (assistant_message))
+    (message_turn
+      (user_message)
+      (assistant_message))))
