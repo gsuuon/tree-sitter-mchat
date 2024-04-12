@@ -3,18 +3,18 @@ module.exports = grammar({
 
   rules: {
     document: $ => seq(
-      $.provider_service,
-      optional($.settings_block),
+      $.chat_handler,
+      optional($.params_block),
       optional($.system_instruction),
       $.message_sequence
     ),
 
-    provider_service: $ => $._line,
+    chat_handler: $ => $._line,
 
-    settings_block: $ => seq(
-      $._settings_separator,
+    params_block: $ => seq(
+      $._params_separator,
       $._lines,
-      $._settings_separator,
+      $._params_separator,
     ),
 
     system_instruction: $ => seq(
@@ -22,18 +22,6 @@ module.exports = grammar({
       $._line,
       $._newline
     ),
-
-    _end: _ => '\0',
-    _newline: _ => /\n/,
-    _line: _ => /.+/,
-    _lines: $ => repeat1(
-      choice(
-        $._line,
-        $._newline
-      )
-    ),
-    _message_separator: _ => token(prec(2, '\n======\n')),
-    _settings_separator: _ => token(prec(2, '\n---\n')),
 
     message_sequence: $ => choice(
       seq($.user_message, optional($._newline)),
@@ -46,10 +34,22 @@ module.exports = grammar({
     ),
 
     user_message: $ => prec.right($._lines),
+
     assistant_message: $ => seq(
       $._message_separator,
       $._lines,
       $._message_separator
-    )
+    ),
+
+    _newline: _ => /\n/,
+    _line: _ => /.+/,
+    _lines: $ => repeat1(
+      choice(
+        $._line,
+        $._newline
+      )
+    ),
+    _message_separator: _ => token(prec(2, '\n======\n')),
+    _params_separator: _ => token(prec(2, '\n---\n'))
   },
 });
