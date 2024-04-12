@@ -9,7 +9,7 @@ count to three
 ---||
 
 (document
-  (provider_service)
+  (chat_handler)
   (message_sequence
     (user_message)))
 
@@ -28,8 +28,8 @@ count to three
 ---||
 
 (document
-  (provider_service)
-  (settings_block)
+  (chat_handler)
+  (params_block)
   (message_sequence
     (user_message)))
 
@@ -51,8 +51,8 @@ count to three
 ---||
 
 (document
-  (provider_service)
-  (settings_block)
+  (chat_handler)
+  (params_block)
   (system_instruction)
   (message_sequence
     (user_message)))
@@ -78,8 +78,8 @@ count to three
 ---||
 
 (document
-  (provider_service)
-  (settings_block)
+  (chat_handler)
+  (params_block)
   (system_instruction)
   (message_sequence
     (message_turn
@@ -113,8 +113,8 @@ continue to five
 ---||
 
 (document
-  (provider_service)
-  (settings_block)
+  (chat_handler)
+  (params_block)
   (system_instruction)
   (message_sequence
     (message_turn
