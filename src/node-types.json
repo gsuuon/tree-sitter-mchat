@@ -1,0 +1,96 @@
+[
+  {
+    "type": "assistant_message",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "document",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "message_sequence",
+          "named": true
+        },
+        {
+          "type": "provider_service",
+          "named": true
+        },
+        {
+          "type": "settings_block",
+          "named": true
+        },
+        {
+          "type": "system_instruction",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "message_sequence",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "message_turn",
+          "named": true
+        },
+        {
+          "type": "user_message",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "message_turn",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assistant_message",
+          "named": true
+        },
+        {
+          "type": "user_message",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "provider_service",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "settings_block",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "system_instruction",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "user_message",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "> ",
+    "named": false
+  }
+]
