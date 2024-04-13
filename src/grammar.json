@@ -16,8 +16,17 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "params_block"
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "params_block"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_newline"
+                }
+              ]
             },
             {
               "type": "BLANK"
@@ -32,11 +41,11 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_newline"
+                  "name": "system_instruction"
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "system_instruction"
+                  "name": "_newline"
                 }
               ]
             },
