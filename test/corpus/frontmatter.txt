@@ -101,13 +101,16 @@ testchathandler
 count to three
 
 ======
-1, 2, 3.
+1
+2
+3
 ======
 
 continue to five
 
 ======
-4, 5.
+4
+5
 ======
 
 ---||
