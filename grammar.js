@@ -36,8 +36,11 @@ module.exports = grammar({
     ),
 
     message_sequence: $ => choice(
-      seq($.user_message, optional($._newline)),
-      repeat1($.message_turn),
+      $.user_message,
+      seq(
+        repeat1($.message_turn),
+        optional($.user_message)
+      )
     ),
 
     message_turn: $ => seq(

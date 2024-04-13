@@ -144,3 +144,37 @@ continue to five
     (message_turn
       (user_message)
       (assistant_message))))
+
+==============||
+Handler, settings, instruction, turns ending with user
+==============||
+
+testchathandler
+---
+{
+  model = "gpt"
+}
+---
+> You are a helpful assistant
+
+count to three
+
+======
+1
+2
+3
+======
+
+continue to five
+
+---||
+
+(document
+  (chat_handler)
+  (params_block)
+  (system_instruction)
+  (message_sequence
+    (message_turn
+      (user_message)
+      (assistant_message))
+    (user_message)))
