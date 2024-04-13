@@ -113,18 +113,25 @@
       "type": "CHOICE",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "user_message"
+        },
+        {
           "type": "SEQ",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "user_message"
+              "type": "REPEAT1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "message_turn"
+              }
             },
             {
               "type": "CHOICE",
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_newline"
+                  "name": "user_message"
                 },
                 {
                   "type": "BLANK"
@@ -132,13 +139,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SYMBOL",
-            "name": "message_turn"
-          }
         }
       ]
     },
