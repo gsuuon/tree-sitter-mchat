@@ -4,23 +4,30 @@ module.exports = grammar({
   rules: {
     document: $ => seq(
       $.chat_handler,
+      $._newline,
       optional($.params_block),
-      optional($.system_instruction),
+      optional(
+        seq(
+          $._newline,
+          $.system_instruction
+        )
+      ),
       $.message_sequence
     ),
 
     chat_handler: $ => $._line,
 
     params_block: $ => seq(
-      $._params_separator,
+      '---',
+      $._newline,
       $._lines,
-      $._params_separator,
+      $._newline,
+      '---',
     ),
 
     system_instruction: $ => seq(
       token(prec(2, '> ')),
       $._line,
-      $._newline
     ),
 
     message_sequence: $ => choice(
@@ -46,7 +53,9 @@ module.exports = grammar({
         $._newline
       )
     ),
-    _message_separator: _ => token(prec(2, '\n======\n')),
-    _params_separator: _ => token(prec(2, '\n---\n'))
+    _message_separator: $ => seq(
+      token(prec(2, '======')),
+      $._newline,
+    )
   },
 });
