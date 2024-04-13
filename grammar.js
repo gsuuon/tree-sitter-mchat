@@ -5,11 +5,16 @@ module.exports = grammar({
     document: $ => seq(
       $.chat_handler,
       $._newline,
-      optional($.params_block),
       optional(
         seq(
-          $._newline,
-          $.system_instruction
+          $.params_block,
+          $._newline
+        )
+      ),
+      optional(
+        seq(
+          $.system_instruction,
+          $._newline
         )
       ),
       $.message_sequence

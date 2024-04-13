@@ -14,6 +14,24 @@ count to three
     (user_message)))
 
 ==============||
+Handler, instruction and message
+==============||
+
+testchathandler
+
+> instruction
+
+message
+
+---||
+
+(document
+  (chat_handler)
+  (system_instruction)
+  (message_sequence
+    (user_message)))
+
+==============||
 Handler, message and settings
 ==============||
 
