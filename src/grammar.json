@@ -9,6 +9,10 @@
           "name": "chat_handler"
         },
         {
+          "type": "SYMBOL",
+          "name": "_newline"
+        },
+        {
           "type": "CHOICE",
           "members": [
             {
@@ -24,8 +28,17 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "system_instruction"
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_newline"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "system_instruction"
+                }
+              ]
             },
             {
               "type": "BLANK"
@@ -46,8 +59,12 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "STRING",
+          "value": "---"
+        },
+        {
           "type": "SYMBOL",
-          "name": "_params_separator"
+          "name": "_newline"
         },
         {
           "type": "SYMBOL",
@@ -55,7 +72,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_params_separator"
+          "name": "_newline"
+        },
+        {
+          "type": "STRING",
+          "value": "---"
         }
       ]
     },
@@ -76,10 +97,6 @@
         {
           "type": "SYMBOL",
           "name": "_line"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_newline"
         }
       ]
     },
@@ -174,26 +191,24 @@
       }
     },
     "_message_separator": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 2,
-        "content": {
-          "type": "STRING",
-          "value": "\n======\n"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "STRING",
+              "value": "======"
+            }
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
         }
-      }
-    },
-    "_params_separator": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 2,
-        "content": {
-          "type": "STRING",
-          "value": "\n---\n"
-        }
-      }
+      ]
     }
   },
   "extras": [
