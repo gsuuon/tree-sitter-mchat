@@ -2,10 +2,33 @@
   {
     "type": "assistant_message",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "content",
+          "named": true
+        },
+        {
+          "type": "reason_delimiter",
+          "named": true
+        },
+        {
+          "type": "reasoning",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "chat_handler",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "content",
     "named": true,
     "fields": {}
   },
@@ -80,6 +103,11 @@
     "fields": {}
   },
   {
+    "type": "reasoning",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "system_instruction",
     "named": true,
     "fields": {}
@@ -100,5 +128,9 @@
   {
     "type": "> ",
     "named": false
+  },
+  {
+    "type": "reason_delimiter",
+    "named": true
   }
 ]

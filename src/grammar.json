@@ -172,8 +172,75 @@
       }
     },
     "assistant_message": {
-      "type": "SYMBOL",
-      "name": "_lines"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_reasoning"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "PATTERN",
+              "value": ".+"
+            }
+          },
+          "named": true,
+          "value": "content"
+        }
+      ]
+    },
+    "_reasoning": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "<<<<<< reasoning"
+          },
+          "named": true,
+          "value": "reason_delimiter"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "PATTERN",
+              "value": ".+"
+            }
+          },
+          "named": true,
+          "value": "reasoning"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 2,
+              "content": {
+                "type": "STRING",
+                "value": ">>>>>>"
+              }
+            }
+          },
+          "named": true,
+          "value": "reason_delimiter"
+        }
+      ]
     },
     "_newline": {
       "type": "PATTERN",
@@ -232,4 +299,3 @@
   "inline": [],
   "supertypes": []
 }
-
