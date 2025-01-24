@@ -102,7 +102,8 @@ count to three
   (message_sequence
     (message_turn
       (user_message)
-      (assistant_message))))
+      (assistant_message
+        (content)))))
 
 ==============||
 Handler, settings, instruction, multiple turns
@@ -140,10 +141,12 @@ continue to five
   (message_sequence
     (message_turn
       (user_message)
-      (assistant_message))
+      (assistant_message
+        (content)))
     (message_turn
       (user_message)
-      (assistant_message))))
+      (assistant_message
+        (content)))))
 
 ==============||
 Handler, settings, instruction, turns ending with user
@@ -176,5 +179,45 @@ continue to five
   (message_sequence
     (message_turn
       (user_message)
-      (assistant_message))
+      (assistant_message
+        (content)))
     (user_message)))
+
+==============||
+Reasoning
+==============||
+
+testchathandler
+---
+{
+  model = "model"
+}
+---
+> You are a helpful assistant
+
+count to three
+
+======
+<<<<<< reasoning
+I should count to three
+here
+>>>>>>
+1
+2
+3
+======
+
+---||
+
+(document
+  (chat_handler)
+  (params_block)
+  (system_instruction)
+  (message_sequence
+    (message_turn
+      (user_message)
+      (assistant_message
+        (reason_delimiter)
+        (reasoning)
+        (reason_delimiter)
+        (content)))))
