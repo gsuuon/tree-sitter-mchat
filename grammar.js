@@ -45,9 +45,9 @@ module.exports = grammar({
 
     message_turn: $ => seq(
       $.user_message,
-      $._message_separator,
+      $.turn_delimiter,
       $.assistant_message,
-      $._message_separator,
+      $.turn_delimiter,
     ),
 
     user_message: $ => prec.right($._lines),
@@ -70,7 +70,7 @@ module.exports = grammar({
         $._newline
       )
     ),
-    _message_separator: $ => seq(
+    turn_delimiter: $ => seq(
       token(prec(2, '======')),
       $._newline,
     )

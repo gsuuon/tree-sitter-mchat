@@ -102,8 +102,10 @@ count to three
   (message_sequence
     (message_turn
       (user_message)
+      (turn_delimiter)
       (assistant_message
-        (content)))))
+        (content))
+      (turn_delimiter))))
 
 ==============||
 Handler, settings, instruction, multiple turns
@@ -141,12 +143,16 @@ continue to five
   (message_sequence
     (message_turn
       (user_message)
+      (turn_delimiter)
       (assistant_message
-        (content)))
+        (content))
+      (turn_delimiter))
     (message_turn
       (user_message)
+      (turn_delimiter)
       (assistant_message
-        (content)))))
+        (content))
+      (turn_delimiter))))
 
 ==============||
 Handler, settings, instruction, turns ending with user
@@ -179,8 +185,10 @@ continue to five
   (message_sequence
     (message_turn
       (user_message)
+      (turn_delimiter)
       (assistant_message
-        (content)))
+        (content))
+      (turn_delimiter))
     (user_message)))
 
 ==============||
@@ -216,8 +224,10 @@ here
   (message_sequence
     (message_turn
       (user_message)
+      (turn_delimiter)
       (assistant_message
         (reason_delimiter)
         (reasoning)
         (reason_delimiter)
-        (content)))))
+        (content))
+      (turn_delimiter))))
