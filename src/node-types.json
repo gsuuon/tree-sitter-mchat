@@ -91,6 +91,10 @@
           "named": true
         },
         {
+          "type": "turn_delimiter",
+          "named": true
+        },
+        {
           "type": "user_message",
           "named": true
         }
@@ -109,6 +113,11 @@
   },
   {
     "type": "system_instruction",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "turn_delimiter",
     "named": true,
     "fields": {}
   },

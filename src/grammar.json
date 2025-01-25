@@ -151,7 +151,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_message_separator"
+          "name": "turn_delimiter"
         },
         {
           "type": "SYMBOL",
@@ -159,7 +159,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_message_separator"
+          "name": "turn_delimiter"
         }
       ]
     },
@@ -266,7 +266,7 @@
         ]
       }
     },
-    "_message_separator": {
+    "turn_delimiter": {
       "type": "SEQ",
       "members": [
         {
