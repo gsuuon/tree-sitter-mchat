@@ -100,12 +100,11 @@ count to three
   (params_block)
   (system_instruction)
   (message_sequence
-    (message_turn
-      (user_message)
-      (turn_delimiter)
-      (assistant_message
-        (content))
-      (turn_delimiter))))
+    (user_message)
+    (turn_delimiter)
+    (assistant_message
+      (content))
+    (turn_delimiter)))
 
 ==============||
 Handler, settings, instruction, multiple turns
@@ -141,18 +140,16 @@ continue to five
   (params_block)
   (system_instruction)
   (message_sequence
-    (message_turn
-      (user_message)
-      (turn_delimiter)
-      (assistant_message
-        (content))
-      (turn_delimiter))
-    (message_turn
-      (user_message)
-      (turn_delimiter)
-      (assistant_message
-        (content))
-      (turn_delimiter))))
+   (user_message)
+   (turn_delimiter)
+   (assistant_message
+    (content))
+   (turn_delimiter)
+   (user_message)
+   (turn_delimiter)
+   (assistant_message
+    (content))
+   (turn_delimiter)))
 
 ==============||
 Handler, settings, instruction, turns ending with user
@@ -183,16 +180,15 @@ continue to five
   (params_block)
   (system_instruction)
   (message_sequence
-    (message_turn
-      (user_message)
-      (turn_delimiter)
-      (assistant_message
-        (content))
-      (turn_delimiter))
+   (user_message)
+   (turn_delimiter)
+   (assistant_message
+    (content))
+   (turn_delimiter)
     (user_message)))
 
 ==============||
-Reasoning
+Reasoning in data section
 ==============||
 
 testchathandler
@@ -222,12 +218,11 @@ here
   (params_block)
   (system_instruction)
   (message_sequence
-    (message_turn
-      (user_message)
-      (turn_delimiter)
-      (assistant_message
-        (reason_delimiter)
-        (reasoning)
-        (reason_delimiter)
-        (content))
-      (turn_delimiter))))
+   (user_message)
+   (turn_delimiter)
+   (assistant_message
+    (data_section_open)
+    (data_section)
+    (data_section_close)
+    (content))
+   (turn_delimiter)))

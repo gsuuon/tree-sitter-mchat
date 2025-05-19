@@ -35,19 +35,23 @@ module.exports = grammar({
       $._line,
     ),
 
-    message_sequence: $ => choice(
+    message_sequence: $ => seq(
       $.user_message,
-      seq(
-        repeat1($.message_turn),
-        optional($.user_message)
+      repeat(
+        seq(
+          $.turn_delimiter,
+          $.assistant_message,
+          $.turn_delimiter,
+          $.user_message,
+        )
+      ),
+      optional(
+        seq(
+          $.turn_delimiter,
+          $.assistant_message,
+          optional($.turn_delimiter),
+        )
       )
-    ),
-
-    message_turn: $ => seq(
-      $.user_message,
-      $.turn_delimiter,
-      $.assistant_message,
-      $.turn_delimiter,
     ),
 
     user_message: $ => prec.right($._lines),
