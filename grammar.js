@@ -55,15 +55,18 @@ module.exports = grammar({
     ),
 
     user_message: $ => prec.right($._lines),
+
+    content: _ => repeat1(/.+/),
+
     assistant_message: $ => seq(
-      optional($._reasoning),
-      alias(repeat1(/.+/), $.content),
+      optional($.data_section),
+      $.content
     ),
 
-    _reasoning: $ => seq(
-      alias('<<<<<< reasoning', $.reason_delimiter),
-      alias(repeat(/.+/), $.reasoning),
-      alias(token(prec(2, '>>>>>>')), $.reason_delimiter),
+    data_section: $ => seq(
+      alias(/<<<<<<(?: .+)?\n/, $.data_section_open), 
+      alias(repeat(/.+/), $.data_section_body),
+      alias(token(prec(2, '>>>>>>')), $.data_section_close),
     ),
 
     _newline: _ => /\n/,

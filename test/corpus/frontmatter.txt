@@ -185,7 +185,48 @@ continue to five
    (assistant_message
     (content))
    (turn_delimiter)
-    (user_message)))
+   (user_message)))
+
+==============||
+Handler, settings, instruction, turns ending with assistant partial
+==============||
+testchathandler
+---
+{
+  model = "gpt"
+}
+---
+> You are a helpful assistant
+
+count to three
+
+======
+1
+2
+3
+======
+
+continue to five
+
+======
+4
+
+---||
+
+(document
+  (chat_handler)
+  (params_block)
+  (system_instruction)
+  (message_sequence
+    (user_message)
+    (turn_delimiter)
+    (assistant_message
+      (content))
+    (turn_delimiter)
+    (user_message)
+    (turn_delimiter)
+    (assistant_message
+      (content))))
 
 ==============||
 Reasoning in data section
@@ -221,8 +262,9 @@ here
    (user_message)
    (turn_delimiter)
    (assistant_message
-    (data_section_open)
-    (data_section)
-    (data_section_close)
+    (data_section
+      (data_section_open)
+      (data_section_body)
+      (data_section_close))
     (content))
    (turn_delimiter)))
