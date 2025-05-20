@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "mchat",
   "rules": {
     "document": {
@@ -110,39 +111,6 @@
       ]
     },
     "message_sequence": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "user_message"
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "REPEAT1",
-              "content": {
-                "type": "SYMBOL",
-                "name": "message_turn"
-              }
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "user_message"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "message_turn": {
       "type": "SEQ",
       "members": [
         {
@@ -150,16 +118,61 @@
           "name": "user_message"
         },
         {
-          "type": "SYMBOL",
-          "name": "turn_delimiter"
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "turn_delimiter"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "assistant_message"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "turn_delimiter"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "user_message"
+              }
+            ]
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "assistant_message"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "turn_delimiter"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "turn_delimiter"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "assistant_message"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "turn_delimiter"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -171,6 +184,13 @@
         "name": "_lines"
       }
     },
+    "content": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "PATTERN",
+        "value": ".+"
+      }
+    },
     "assistant_message": {
       "type": "SEQ",
       "members": [
@@ -179,7 +199,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_reasoning"
+              "name": "data_section"
             },
             {
               "type": "BLANK"
@@ -187,30 +207,22 @@
           ]
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "REPEAT1",
-            "content": {
-              "type": "PATTERN",
-              "value": ".+"
-            }
-          },
-          "named": true,
-          "value": "content"
+          "type": "SYMBOL",
+          "name": "content"
         }
       ]
     },
-    "_reasoning": {
+    "data_section": {
       "type": "SEQ",
       "members": [
         {
           "type": "ALIAS",
           "content": {
-            "type": "STRING",
-            "value": "<<<<<< reasoning"
+            "type": "PATTERN",
+            "value": "<<<<<<(?: .+)?\\n"
           },
           "named": true,
-          "value": "reason_delimiter"
+          "value": "data_section_open"
         },
         {
           "type": "ALIAS",
@@ -222,7 +234,7 @@
             }
           },
           "named": true,
-          "value": "reasoning"
+          "value": "data_section_body"
         },
         {
           "type": "ALIAS",
@@ -238,7 +250,7 @@
             }
           },
           "named": true,
-          "value": "reason_delimiter"
+          "value": "data_section_close"
         }
       ]
     },

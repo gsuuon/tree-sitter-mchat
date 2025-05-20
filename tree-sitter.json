@@ -1,0 +1,39 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "mchat",
+      "camelcase": "Mchat",
+      "title": "Mchat",
+      "scope": "source.mchat",
+      "file-types": [
+        "mchat"
+      ],
+      "injection-regex": "^mchat$",
+      "class-name": "TreeSitterMchat"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "model.nvim chat buffer grammar",
+    "authors": [
+      {
+        "name": "Steven Sun",
+        "email": "gsuuon@gmail.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/gsuuon/tree-sitter-mchat"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
