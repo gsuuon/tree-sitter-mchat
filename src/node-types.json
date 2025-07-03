@@ -125,7 +125,21 @@
   {
     "type": "user_message",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "content",
+          "named": true
+        },
+        {
+          "type": "data_section",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "---",
