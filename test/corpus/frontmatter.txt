@@ -11,7 +11,8 @@ count to three
 (document
   (chat_handler)
   (message_sequence
-    (user_message)))
+    (user_message
+      (content))))
 
 ==============||
 Handler, instruction and message
@@ -29,7 +30,8 @@ message
   (chat_handler)
   (system_instruction)
   (message_sequence
-    (user_message)))
+    (user_message
+      (content))))
 
 ==============||
 Handler, message and settings
@@ -49,7 +51,8 @@ count to three
   (chat_handler)
   (params_block)
   (message_sequence
-    (user_message)))
+    (user_message
+      (content))))
 
 
 ==============||
@@ -73,7 +76,8 @@ count to three
   (params_block)
   (system_instruction)
   (message_sequence
-    (user_message)))
+    (user_message
+      (content))))
 
 ==============||
 Handler, settings, instruction, turn
@@ -100,7 +104,8 @@ count to three
   (params_block)
   (system_instruction)
   (message_sequence
-    (user_message)
+    (user_message
+      (content))
     (turn_delimiter)
     (assistant_message
       (content))
@@ -140,12 +145,14 @@ continue to five
   (params_block)
   (system_instruction)
   (message_sequence
-   (user_message)
+   (user_message
+     (content))
    (turn_delimiter)
    (assistant_message
     (content))
    (turn_delimiter)
-   (user_message)
+   (user_message
+     (content))
    (turn_delimiter)
    (assistant_message
     (content))
@@ -180,12 +187,14 @@ continue to five
   (params_block)
   (system_instruction)
   (message_sequence
-   (user_message)
+   (user_message
+     (content))
    (turn_delimiter)
    (assistant_message
     (content))
    (turn_delimiter)
-   (user_message)))
+   (user_message
+     (content))))
 
 ==============||
 Handler, settings, instruction, turns ending with assistant partial
@@ -218,12 +227,14 @@ continue to five
   (params_block)
   (system_instruction)
   (message_sequence
-    (user_message)
+    (user_message
+      (content))
     (turn_delimiter)
     (assistant_message
       (content))
     (turn_delimiter)
-    (user_message)
+    (user_message
+      (content))
     (turn_delimiter)
     (assistant_message
       (content))))
@@ -259,7 +270,8 @@ here
   (params_block)
   (system_instruction)
   (message_sequence
-   (user_message)
+   (user_message
+     (content))
    (turn_delimiter)
    (assistant_message
     (data_section
