@@ -54,13 +54,24 @@ module.exports = grammar({
       )
     ),
 
-    user_message: $ => prec.right($._lines),
+    user_message: $ => prec.right(
+      repeat1(
+        choice(
+          $.data_section,
+          $.content
+        )
+      )
+    ),
 
-    content: _ => repeat1(/.+/),
+    content: _ => prec.right(repeat1(/.+/)),
 
     assistant_message: $ => seq(
-      optional($.data_section),
-      $.content
+      repeat1(
+        choice(
+          $.data_section,
+          $.content
+        )
+      )
     ),
 
     data_section: $ => seq(
